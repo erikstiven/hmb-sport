@@ -84,8 +84,7 @@
         <div class="col-lg-6 m-auto">
             <h1 class="h1">Categorias</h1>
             <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
+            Descubre tu estilo en HMB-Sport. Ropa casual, formal y deportiva hecha para destacar. ¡Elige calidad y comodidad en cada prenda!
             </p>
         </div>
     </div>
@@ -106,10 +105,9 @@
     <div class="container py-5">
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Featured Product</h1>
+                <h1 class="h1">Producto Destacado</h1>
                 <p>
-                    Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident.
+                Elige lo mejor con nuestro Producto Destacado en HMB-Sport. Una prenda que combina calidad, estilo y máxima comodidad, perfecta para cualquier ocasión. ¡Añádela a tu colección y destaca con cada paso!
                 </p>
             </div>
         </div>

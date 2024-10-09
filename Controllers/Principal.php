@@ -45,7 +45,7 @@ class Principal extends Controller
      {
         $id_categoria = 1; // inicializo la variable id_categoria a 1
         $page = 1; // inicializo la variable page a 1
-        $array = explode(",", $datos); // separo los datos para saber si hay id_categoria y page
+        $array = explode(',', $datos); // separo los datos para saber si hay id_categoria y page
         if (isset($array[0])){// si hay id_categoria
             if (!empty($array[0])){
                 $id_categoria = $array[0];
@@ -57,7 +57,7 @@ class Principal extends Controller
             }
         }
         $pagina = (empty($page)) ? 1 : $page;
-        $porPagina = 5;
+        $porPagina = 15;
         $desde = ($pagina - 1) * $porPagina;
 
         $data['pagina'] = $pagina;
