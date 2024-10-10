@@ -41,6 +41,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/slick-theme.css">
 
+    <!--Menu -->
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/menu.css">
     <!--
     
 TemplateMo 559 Zay Shop
@@ -48,6 +50,8 @@ TemplateMo 559 Zay Shop
 https://templatemo.com/tm-559-zay-shop
 
 -->
+
+
 </head>
 
 <body>
@@ -91,7 +95,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="<?php echo BASE_URL . '' ?>">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo BASE_URL . 'principal/about' ?>">Servicios</a>
@@ -100,7 +104,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="<?php echo BASE_URL . 'principal/shop' ?>">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo BASE_URL . 'principal/contact' ?>">Contactanos</a>
+                            <a class="nav-link" href="<?php echo BASE_URL . 'principal/contact' ?>">Contáctanos</a>
                         </li>
                     </ul>
                 </div>

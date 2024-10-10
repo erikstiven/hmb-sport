@@ -105,7 +105,7 @@
     <div class="container py-5">
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Producto Destacado</h1>
+                <h1 class="h1">Productos Destacados</h1>
                 <p>
                 Elige lo mejor con nuestro Producto Destacado en HMB-Sport. Una prenda que combina calidad, estilo y máxima comodidad, perfecta para cualquier ocasión. ¡Añádela a tu colección y destaca con cada paso!
                 </p>

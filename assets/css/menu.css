@@ -1,0 +1,22 @@
+
+/* Fijar el Top Nav en la parte superior */
+#templatemo_nav_top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Asegura que esté por encima del contenido */
+}
+
+/* Fijar el menú principal justo debajo del Top Nav */
+nav.navbar.shadow {
+    position: fixed;
+    top: 40px; /* Ajusta según la altura del Top Nav */
+    width: 100%;
+    z-index: 1029; /* Menor que el Top Nav para que no lo tape */
+    background-color: white;
+}
+
+/* Ajustar el contenido para que no quede debajo del menú */
+body {
+    margin-top: 130px; /* Ajusta según la altura combinada del Top Nav y el menú */
+}

@@ -68,6 +68,7 @@ body, ul, li, p, a, label, input, div {
   color: #fff;
 }
 /* Nav */
+
 #templatemo_nav_top { min-height: 40px;}
 #templatemo_nav_top * { font-size: .9em !important;}
 #templatemo_main_nav a { color: #212934;}
@@ -187,5 +188,8 @@ body, ul, li, p, a, label, input, div {
   }
 }
 
+
+
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {}
+
