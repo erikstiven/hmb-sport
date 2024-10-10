@@ -5,7 +5,7 @@ class PrincipalModel extends Query
     {
         parent::__construct();
     }
-     public function getProducto($id_producto)
+    public function getProducto($id_producto)
     {
         $sql = "SELECT p.*, c.categoria FROM productos p INNER JOIN categorias c ON p.id_categoria = c.id WHERE p.id = $id_producto";
         return $this->select($sql);
@@ -16,8 +16,8 @@ class PrincipalModel extends Query
         $sql = "SELECT * FROM productos LIMIT $desde, $porPagina";
         return $this->selectAll($sql);
     }
-//obetner el total de productos para la paginacion
 
+    //obetner el total de productos para la paginacion
     public function getTotalProductos()
     {
         $sql = "SELECT COUNT(*) as total FROM productos";
@@ -34,12 +34,16 @@ class PrincipalModel extends Query
 
     //obetener total productos relacionados con las categorias
 
-    public function getTotalProductosCat($id_categoria){
+    public function getTotalProductosCat($id_categoria)
+    {
         $sql = "SELECT COUNT(*) as total FROM productos WHERE id_categoria = $id_categoria";
         return $this->select($sql);
     }
 
-    
-
-
+//PRODUCTOS RELACIONADOS ALEATORIAMENTE
+    public function getAleatorios($id_categoria, $id_producto)
+    {
+        $sql = "SELECT * FROM productos WHERE id_categoria = $id_categoria  AND id != $id_producto ORDER BY RAND() LIMIT 20";
+        return $this->selectAll($sql);
+    }
 }

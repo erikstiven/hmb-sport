@@ -36,8 +36,11 @@ class Principal extends Controller
     public function detail($id_producto)
     {
         $data['producto'] = $this->model->getProducto($id_producto);
+        $id_categoria = $data['producto']['id_categoria'];
+        $data['relacionados'] = $this->model->getAleatorios($id_categoria, $data['producto']['id']);
+
         $data['title'] = $data['producto']['nombre'];
-        $this->views->getView('principal', "Shop-single", $data);
+        $this->views->getView('principal', "shop-single", $data);
     }
 
      //VISTA CATEGORIAS
@@ -66,6 +69,7 @@ class Principal extends Controller
 
          $data['productos'] = $this->model->getProductosCat($id_categoria, $desde, $porPagina);
          $data['title'] = 'Categorias';
+         $data['id_categoria'] = $id_categoria;
          $this->views->getView('principal', "categorias", $data);
      }
 
