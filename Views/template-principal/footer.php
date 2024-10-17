@@ -102,5 +102,8 @@
     <script src="<?php echo BASE_URL . 'assets/js/bootstrap.bundle.min.js'?>"></script>
     <script src="<?php echo BASE_URL . 'assets/js/custom.js' ?>"></script>
     <script src="<?php echo BASE_URL . 'assets/js/sweetalert2.all.min.js'?>"></script>
+    <script>
+        const base_url = '<?php echo BASE_URL; ?>';
+    </script>
     <script src="<?php echo BASE_URL . 'assets/js/carrito.js'?>"></script>
     <!-- End Script -->
