@@ -1,4 +1,6 @@
 const btnAddDeseo = document.querySelectorAll('.btnAddDeseo');
+const btnAddcarrito = document.querySelectorAll('.btnAddcarrito');
+
 const btnDeseo = document.querySelector('#btnCantidadDeseo');
 let listaDeseo;
 document.addEventListener('DOMContentLoaded', function () {
@@ -12,8 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
             agregarDeseo(idProducto);
         })
     }
+    for (let i =0 ; i < btnAddcarrito.length; i++) {
+        btnAddcarrito[i].addEventListener('click', function () {
+            let idProducto = btnAddcarrito[i].getAttribute('prod');
+            agregarCarrito(idProducto);
+        })
+    }
 })
 
+//AGREGAR PRODUCTOS A LA LISTA DE DESEOS
 function agregarDeseo(idProducto) {
     if (localStorage.getItem('listaDeseo') == null) {
         listaDeseo = [];
@@ -52,4 +61,20 @@ function cantidadDeseo() {
         btnDeseo.textContent = 0;
     }
 
+}
+
+//AGREGAR PRODUCTOS AL CARRITO
+
+function agregarCarrito(idProducto) {
+    let listaExiste = JSON.parse(localStorage.getItem('carrito'));
+    for (let i = 0; i < listaExiste.length; i++) {
+        if (listaExiste[i]['idProducto'] == idProducto) {
+            Swal.fire({ 
+                title: "Aviso?",
+                text: "El producto ya se encuentra en el carrito?",
+                icon: "warning",
+              });
+            return;
+        }   
+    }
 }
