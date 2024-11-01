@@ -7,9 +7,9 @@ const DB = "hmb-sport";
 const CHARSET = "charset=utf8";
 const TITLE = "HMB SPORT";
 const MONEDA = "USD";
-const CLIENT_ID = "";
-const USER_SMTP ="digitalcraftecu@gmail.com";
-const PASS_SMTP ="";//video 17
+const CLIENT_ID = "AZPGwTPrU3toVfBHTwqhIGaNhaZzd4UFDaYejnANEC2sYIgFzhHAL8ug6z-rD-s2Bl0tcvO-uHgssfN5";//cliente id de paypal
+const USER_SMTP ="quisniahugo32@gmail.com";
+const PASS_SMTP ="vwha unel emft stad";//video 17
 const PUERTO_SMTP =465;
 const HOST_SMTP ="smtp.gmail.com";
 

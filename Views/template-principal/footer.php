@@ -25,9 +25,14 @@
                      </table>
                  </div>
              </div>
-             <div class="modal-footer">
+             <div class="d-flex justify-content-around mb-3">
                  <h3 id="totalGeneral">Total</h3>
+                 <?php if (!empty($_SESSION['correoCliente'])) {?>
                  <a class="btn btn-outline-primary" href="<?php echo BASE_URL . 'clientes'; ?>">Procesar Pedido</a>
+                <?php }else{ ?>
+                 <a class="btn btn-outline-primary" href="#" onclick="abrirModalLogin();">Login</a>
+
+                <?php }?> 
              </div>
          </div>
      </div>
@@ -58,7 +63,7 @@
                              </div>
                              <a href="#" id="btnRegister">Todavía no tines una cuenta?</a>
                              <div class="float-end">
-                                 <button class="btn btn-primary btn-lg" type="button" id="Login">Login</button>
+                                 <button class="btn btn-primary btn-lg" type="button" id="login">Login</button>
                              </div>
 
                          </div>

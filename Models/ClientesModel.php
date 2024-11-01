@@ -38,4 +38,10 @@ class ClientesModel extends Query
         }
         return $res;
     }
+    //verificar correo
+    public function getVerificar($correo)
+    {
+        $sql = "SELECT * FROM clientes WHERE correo = '$correo'";
+        return $this->select($sql);
+    }
 }

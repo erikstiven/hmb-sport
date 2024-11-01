@@ -26,11 +26,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="<?php echo BASE_URL; ?>assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL . 'assets/img/favicon.ico' ; ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL . 'assets/img/favicon.ico'; ?>">
 
-    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/bootstrap.min.css' ; ?>">
-    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/templatemo.css' ; ?>">
-    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/custom.css' ; ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/bootstrap.min.css'; ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/templatemo.css'; ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/custom.css'; ?>">
 
 
     <!-- Load fonts style after rendering the layout styles -->
@@ -44,6 +44,8 @@
     <!--Menu -->
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/menu.css">
 
+
+   
     <!--
     
     
@@ -130,10 +132,15 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fas fa-fw fa-heart text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" id="btnCantidadDeseo">0</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" >
-                        <i class="fas fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+                    <?php if (!empty($_SESSION['correoCliente'])) { ?>
+                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'clientes' ?>" >
+                            <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.png'?>" alt="-LOGO-CLIENTE" width="50">
+                        </a>
+                    <?php } else { ?>
+                        <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                            <i class="fas fa-fw fa-user text-dark mr-3"></i>
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
 

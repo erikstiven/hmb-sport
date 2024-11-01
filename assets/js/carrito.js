@@ -4,6 +4,10 @@ const btnDeseo = document.querySelector('#btnCantidadDeseo');
 const btnCarrito = document.querySelector('#btnCantidadCarrito');//boton de carrito
 const verCarrito = document.querySelector('#verCarrito');
 const tableListaCarrito = document.querySelector("#tableListaCarrito tbody");
+
+//VER CARRITO
+const myModal = new bootstrap.Modal(document.getElementById('myModal'))//iniciamos el modal
+
 let listaDeseo, listaCarrito;
 document.addEventListener('DOMContentLoaded', function () {
     if (localStorage.getItem('listaDeseo') != null) {
@@ -27,8 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     cantidadDeseo();
     cantidadCarrito();
-    //VER CARRITO
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'))//iniciamos el modal
     verCarrito.addEventListener('click', function () {//al presionar el boton
         getListaCarrito();//llamamos la funcion
         myModal.show();//mostramos
