@@ -123,6 +123,8 @@ class Principal extends Controller
             $total += $subTotal;//calculamos el total
         }
         $array['total'] = number_format($total, 2);//asignamos el total
+        $array['totalPaypal'] = $total;//asignamos el total
+
         $array['moneda']= MONEDA;//asignamos la moneda
         echo json_encode($array , JSON_UNESCAPED_UNICODE);//enviamos el array
         die();//detenemos

@@ -45,7 +45,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/menu.css">
 
 
-   
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID;  ?>&currency=<?php echo MONEDA; ?>"></script>
+
     <!--
     
     
@@ -133,8 +135,8 @@ https://templatemo.com/tm-559-zay-shop
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" id="btnCantidadDeseo">0</span>
                     </a>
                     <?php if (!empty($_SESSION['correoCliente'])) { ?>
-                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'clientes' ?>" >
-                            <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.png'?>" alt="-LOGO-CLIENTE" width="50">
+                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'clientes' ?>">
+                            <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.png' ?>" alt="-LOGO-CLIENTE" width="50">
                         </a>
                     <?php } else { ?>
                         <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">

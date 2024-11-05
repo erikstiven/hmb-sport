@@ -26,6 +26,33 @@ function getListaProductos() {
       });
       tableLista.innerHTML = html;//insertamos el html en el body
       document.querySelector('#totalProducto').textContent = 'TOTAL A PAGAR: ' + res.moneda + ' ' + res.total;
+      botonPaypal(res.totalPaypal);
     }
   };
+}
+
+function botonPaypal(total) {
+  // Render the PayPal button into #paypal-button-container
+  paypal.Buttons({
+    // Call your server to set up the transaction
+    createOrder: (data, actions) => {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: total
+          }
+        }]
+
+      })
+    },
+
+    // Call your server to finalize the transaction
+    onApprove: (data, actions) => {
+      return actions.render.capture().then(function (orderData) {
+        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+        const transaction = orderData.purchase_units[0].payments.captures[0];
+        alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for details.`);
+      });
+    }
+  }).render('#paypal-button-container');
 }
