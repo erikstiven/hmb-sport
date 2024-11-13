@@ -5,6 +5,7 @@ class Principal extends Controller
     {
         parent::__construct();
         session_start();
+
     }
     public function index() {}
 
@@ -124,7 +125,6 @@ class Principal extends Controller
         }
         $array['total'] = number_format($total, 2);//asignamos el total
         $array['totalPaypal'] = $total;//asignamos el total
-
         $array['moneda']= MONEDA;//asignamos la moneda
         echo json_encode($array , JSON_UNESCAPED_UNICODE);//enviamos el array
         die();//detenemos

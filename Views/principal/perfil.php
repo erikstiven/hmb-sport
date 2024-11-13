@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <div class="accordion-item">
+                            <!--<div class="accordion-item">
                                 <h2 class="accordion-header" id="heaTwo">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         MERCADO PAGO
@@ -63,7 +63,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -83,6 +83,7 @@
 <!-- End Content -->
 
 <?php include_once 'Views/template-principal/footer.php'; ?>
+
 
 
 <script src="<?php echo BASE_URL . 'assets/js/clientes.js'; ?>"></script>

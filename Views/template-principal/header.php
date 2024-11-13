@@ -42,11 +42,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/slick-theme.css">
 
     <!--Menu -->
-    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/menu.css">
+   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/menu.css">
 
 
     <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID;  ?>&currency=<?php echo MONEDA; ?>"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=<?php echo MONEDA; ?>"></script>
+
 
     <!--
     

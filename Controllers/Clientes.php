@@ -13,19 +13,19 @@ class Clientes extends Controller
         parent::__construct();
         session_start();
     }
+
     public function index()
     {
         if (empty($_SESSION['correoCliente'])) {
             header('Location: ' . BASE_URL);
-        } else {
-            # code...
         }
-
+        $data['perfil'] = 'si';
         $data['title'] = 'Tu Perfil';
+       // $data['categorias'] = $this->model->getCategorias();
         $data['verificar'] = $this->model->getVerificar($_SESSION['correoCliente']);
         $this->views->getView('principal', "perfil", $data);
     }
-    
+
     public function registroDirecto()
     {
         if (isset($_POST['nombre']) && isset($_POST['clave'])) {
@@ -41,6 +41,7 @@ class Clientes extends Controller
                     $hash = password_hash($clave, PASSWORD_DEFAULT);
                     $data = $this->model->registroDirecto($nombre, $correo, $hash, $token);
                     if ($data > 0) {
+                        $_SESSION['idCliente'] = $data;
                         $_SESSION['correoCliente'] = $correo;
                         $_SESSION['nombreCliente'] = $nombre;
 
@@ -117,6 +118,7 @@ class Clientes extends Controller
                 $verificar = $this->model->getVerificar($correo);
                 if (!empty($verificar)) {
                     if (password_verify($clave, $verificar['clave'])) {
+                        $_SESSION['idCliente'] = $verificar['id'];
                         $_SESSION['correoCliente'] = $verificar['correo'];
                         $_SESSION['nombreCliente'] = $verificar['nombre'];
                         $mensaje = array('msg' => 'Ok', 'icono' => 'success');
@@ -130,5 +132,50 @@ class Clientes extends Controller
                 die();
             }
         }
+    }
+    //registrar pedidos
+    public function registrarPedido()
+    {
+        $datos = file_get_contents('php://input');
+        $json = json_decode($datos, true);
+        $pedidos = $json['pedidos'];
+        $productos = $json['productos'];
+        if (is_array($pedidos) && is_array($productos)) {
+            $id_transaccion = $pedidos['id'];
+            $monto = $pedidos['purchase_units'][0]['amount']['value'];
+            $estado = $pedidos['status'];
+            $fecha = date('Y-m-d H:i:s');
+            $email = $pedidos['payer']['email_address'];
+            $nombre = $pedidos['payer']['name']['given_name'];
+            $apellido = $pedidos['payer']['name']['surname'];
+            $direccion = $pedidos['purchase_units'][0]['shipping']['address']['address_line_1'];
+            $ciudad = $pedidos['purchase_units'][0]['shipping']['address']['admin_area_2'];
+            $id_cliente = $_SESSION['idCliente'];
+            $data = $this->model->registrarPedido(
+                $id_transaccion,
+                $monto,
+                $estado,
+                $fecha,
+                $email,
+                $nombre,
+                $apellido,
+                $direccion,
+                $ciudad,
+                $id_cliente
+            );
+            if ($data > 0) {
+                foreach ($productos as $producto) {
+                    $temp = $this->model->getProducto($producto['idProducto']);
+                    $this->model->registrarDetalle($temp['nombre'], $temp['precio'], $producto['cantidad'], $data, $producto['idProducto']);
+                }
+                $mensaje = array('msg' => 'pedido registrado', 'icono' => 'success');
+            } else {
+                $mensaje = array('msg' => 'error al registrar el pedido', 'icono' => 'error');
+            }
+        } else {
+            $mensaje = array('msg' => 'error fatal con los datos', 'icono' => 'error');
+        }
+        echo json_encode($mensaje);
+        die();
     }
 }
