@@ -178,4 +178,15 @@ class Clientes extends Controller
         echo json_encode($mensaje);
         die();
     }
+    //listar productos pendientes
+    public function listarPendientes()
+    {
+        $id_cliente = $_SESSION['idCliente'];
+        $data = $this->model->getPedidos($id_cliente);
+        for ($i = 0; $i < count($data); $i++) {
+            $data[$i]['accion'] = '<div class="text-center"><button class="btn btn-primary" type="button" onclick="verPedido(' . $data[$i]['id'] . ')"><i class="fas fa-eye"></i></button></div>';
+        }
+        echo json_encode($data);
+        die();
+    }
 }

@@ -107,26 +107,29 @@ class Principal extends Controller
     //OBTENER PRODUCTOS APARTIR DE LA LISTA DEL CARRITO
     public function listaProductos()
     {
-        $datos = file_get_contents('php://input');//obtenemos los datos
-        $json = json_decode($datos, true);//decodificamos los datos
-        $array['productos'] = array();//creamos el array
-        $total = 0.00;//inicializamos el total
-        foreach ($json as $producto) {//recorremos la lista
-            $result =  $this->model->getProducto($producto['idProducto']);//obtenemos el producto
-            $data['id'] = $result['id'];//asignamos los datos
-            $data['nombre'] = $result['nombre'];
-            $data['precio'] = $result['precio'];
-            $data['cantidad'] = $producto['cantidad'];
-            $data['imagen'] = $result['imagen'];
-            $subTotal = $result['precio'] * $producto['cantidad'];//calculamos el subTotal
-            $data['subTotal'] = number_format($subTotal, 2);
-            array_push($array['productos'], $data);//asignamos los datos al array
-            $total += $subTotal;//calculamos el total
-        }
-        $array['total'] = number_format($total, 2);//asignamos el total
-        $array['totalPaypal'] = $total;//asignamos el total
-        $array['moneda']= MONEDA;//asignamos la moneda
-        echo json_encode($array , JSON_UNESCAPED_UNICODE);//enviamos el array
-        die();//detenemos
+        $datos = file_get_contents('php://input');
+        $json = json_decode($datos, true);
+        $array['productos'] = array();
+        $total = 0.00;
+        if (!empty($json)) {
+            foreach ($json as $producto) {
+                $result = $this->model->getProducto($producto['idProducto']);
+                $data['id'] = $result['id'];
+                $data['nombre'] = $result['nombre'];
+                $data['precio'] = $result['precio'];
+                $data['cantidad'] = $producto['cantidad'];
+                $data['imagen'] = $result['imagen'];
+                $subTotal = $result['precio'] * $producto['cantidad'];
+                $data['subTotal'] = number_format($subTotal, 2);
+                array_push($array['productos'], $data);
+                $total += $subTotal;
+            }
+        }        
+        $array['total'] = number_format($total, 2);
+        $array['totalPaypal'] = number_format($total, 2, '.', '');
+        $array['moneda'] = MONEDA;
+        echo json_encode($array, JSON_UNESCAPED_UNICODE);
+        die();
     }
+
 }

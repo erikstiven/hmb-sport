@@ -41,6 +41,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/slick-theme.css">
 
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/DataTables/datatables.min.css">
+
+
     <!--Menu -->
    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/menu.css">
 

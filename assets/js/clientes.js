@@ -1,9 +1,11 @@
 const tableLista = document.querySelector("#tableListaProductos tbody");
-const tblPendientes = document.querySelector('#tblPendientes');
+const tblPendientes = document.querySelector('#tblPendientes');//id de la tala pendientes del perfil
 let productosjson = [];
 const estadoEnviado = document.querySelector('#estadoEnviado');
 const estadoProceso = document.querySelector('#estadoProceso');
 const estadoCompletado = document.querySelector('#estadoCompletado');
+// Define la variable language
+
 document.addEventListener("DOMContentLoaded", function() {
     if (tableLista) {
         getListaProductos();
@@ -11,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //cargar datos pendientes con DataTables
     $('#tblPendientes').DataTable({
         ajax: {
-            url: base_url + 'clientes/listarPendientes',
+            url: base_url + 'clientes/listarPendientes',//asignar rutas
             dataSrc: ''
         },
         columns: [
@@ -23,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
         language,
         dom,
         buttons
-
     });
 });
 
@@ -36,8 +37,8 @@ function getListaProductos() {
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             const res = JSON.parse(this.responseText);
-            if (res.totalPaypal > 0) {
-                res.productos.forEach(producto => {
+            if (res.totalPaypal > 0) {//si hay productos
+                res.productos.forEach(producto => {//recorremos la lista
                     html += `<tr>
                         <td>
                             <img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100">

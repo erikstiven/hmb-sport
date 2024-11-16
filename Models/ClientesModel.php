@@ -78,6 +78,12 @@ class ClientesModel extends Query
         }
         return $res;
     }
+    //metodo getpedidos
+    public function getPedidos($id_cliente)
+    {
+        $sql = "SELECT * FROM pedidos WHERE id_cliente = $id_cliente";
+        return $this->selectAll($sql);
+    }
 
 }
  
