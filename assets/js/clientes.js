@@ -6,7 +6,7 @@ const estadoProceso = document.querySelector('#estadoProceso');
 const estadoCompletado = document.querySelector('#estadoCompletado');
 // Define la variable language
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     if (tableLista) {
         getListaProductos();
     }
@@ -34,7 +34,7 @@ function getListaProductos() {
     const http = new XMLHttpRequest();
     http.open('POST', url, true);
     http.send(JSON.stringify(listaCarrito));
-    http.onreadystatechange = function() {
+    http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             const res = JSON.parse(this.responseText);
             if (res.totalPaypal > 0) {//si hay productos
@@ -102,7 +102,7 @@ function botonPaypal(total, moneda) {
         },
         // Finalize the transaction after payer approval
         onApprove: (data, actions) => {
-            return actions.order.capture().then(function(orderData) {
+            return actions.order.capture().then(function (orderData) {
                 registrarPedido(orderData)
             });
         }
@@ -117,7 +117,7 @@ function registrarPedido(datos) {
         pedidos: datos,
         productos: listaCarrito
     }));
-    http.onreadystatechange = function() {
+    http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             const res = JSON.parse(this.responseText);
@@ -131,7 +131,7 @@ function registrarPedido(datos) {
         }
     }
 }
-/*
+
 function verPedido(idPedido) {
     estadoEnviado.classList.remove('bg-info');
     estadoProceso.classList.remove('bg-info');
@@ -166,7 +166,8 @@ function verPedido(idPedido) {
         }
     }
 
-}*/
+}
+
 
 // sb-j6jdb7896999@personal.example.com
 // e8O2lR-I

@@ -84,6 +84,16 @@ class ClientesModel extends Query
         $sql = "SELECT * FROM pedidos WHERE id_cliente = $id_cliente";
         return $this->selectAll($sql);
     }
+   public function getPedido($idPedido)
+    {
+        $sql = "SELECT * FROM pedidos WHERE id = $idPedido";
+        return $this->select($sql);
+    }
+    public function verPedidos($idPedido)
+    {
+        $sql = "SELECT d.* FROM pedidos p INNER JOIN detalle_pedidos d ON p.id = d.id_pedido WHERE p.id = $idPedido";
+        return $this->selectAll($sql);
+    }
 
 }
  

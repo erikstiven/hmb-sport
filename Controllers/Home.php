@@ -8,6 +8,7 @@ class Home extends Controller
     }
     public function index()
     {
+        $data['perfil'] = 'no';
         $data['title'] = 'Pagina Principal';
         $data['categorias'] = $this->model->getCategorias();
         $data['nuevosProductos'] = $this->model->getNuevosProductos();

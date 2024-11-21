@@ -44,6 +44,15 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card shadow-lg">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle float-end" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL . 'clientes/salir'; ?>"><i class="fas fa-times-circle">Cerrar Sesión</i></a></li>
+
+                                </ul>
+                            </div>
                             <div class="card-body text-center">
 
                                 <img class="img-thumbnail rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.png'; ?>" alt="" width="250">
@@ -73,20 +82,24 @@
             </div>
             <div class="tab-pane fade" id="pendientes-tab-pane" role="tabpanel" aria-labelledby="pendientes -tab" tabindex="0">
                 <div class="col-12">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover" id="tblPendientes" style="width: 100%;">
-                            <thead class="bg-dark text-white">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Monto</th>
-                                    <th>Fecha</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover" id="tblPendientes" style="width: 100%;">
+                                    <thead class="bg-dark text-white">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Monto</th>
+                                            <th>Fecha</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                            </tbody>
-                        </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,12 +117,66 @@
     <?php } ?>
 </div>
 <!-- End Content -->
+<div id="modalPedido" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Estado del pedido</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-4 pb-5">
+                        <div class="h-100 py-5 services-icon-wap shadow" id="estadoEnviado">
+                            <div class="h1 text-success text-center"><i class="fa fa-truck fa-lg"></i></div>
+                            <h2 class="h5 mt-4 text-center">Enviado</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 pb-5">
+                        <div class="h-100 py-5 services-icon-wap shadow" id="estadoProceso">
+                            <div class="h1 text-success text-center"><i class="fas fa-exchange-alt"></i></div>
+                            <h2 class="h5 mt-4 text-center">Proceso</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 pb-5">
+                        <div class="h-100 py-5 services-icon-wap shadow" id="estadoCompletado">
+                            <div class="h1 text-success text-center"><i class="fa fa-percent"></i></div>
+                            <h2 class="h5 mt-4 text-center">Completado</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-borderer table-striped table-hover align-middle" id="tablePedidos" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Sub Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include_once 'Views/template-principal/footer.php'; ?>
 
 <script type="text/javascript" src="<?php echo BASE_URL . 'assets/DataTables/datatables.min.js'; ?>"></script>
 
-<script src="<?php echo BASE_URL; ?> assets/js/es-ES.js"></script>
+<script src="<?php echo BASE_URL; ?>assets/js/es-ES.js"></script>
 
 
 

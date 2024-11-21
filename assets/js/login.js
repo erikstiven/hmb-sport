@@ -15,6 +15,8 @@ const claveLogin = document.querySelector('#claveLogin');
 
 const modalLogin = new bootstrap.Modal(document.getElementById('modalLogin'))//iniciamos el modal
 
+const inputBusqueda = document.querySelector("#search");
+
 
 //const tableLista = document.querySelector("#tableListaProductos tbody");
 document.addEventListener("DOMContentLoaded", function () {
@@ -80,7 +82,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-
+  //busqueda de productos
+  inputBusqueda.addEventListener("keyup", function (e) {
+    if (e.target.value != "") {
+      const url = base_url + "principal/busqueda/" + e.target.value;
+      const http = new XMLHttpRequest();
+      http.open("GET", url, true);
+      http.send();
+      http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          const res = JSON.parse(this.responseText);
+          let html = "";
+          res.forEach((producto) => {
+            html += `<div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                      <a href="#">
+                        <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                      </a>
+                      <div class="card-body">
+                        <a href="#" class="h2 text-decoration-none text-dark">${producto.nombre}</a>
+                        <p class="card-text">
+                        $${producto.precio}
+                        </p>
+                        <div class="buy_bt"><a href="#" onclick="agregarCarrito(${producto.id}, 1)">Añadir</a></div>
+                      </div>
+                    </div>
+                  </div>`;
+          });
+          document.querySelector("#resultBusqueda").innerHTML = html;
+        }
+      };
+    }else{
+        document.querySelector('#resultBusqueda').innerHTML = '';
+    }
+  });
 });
 
 //Funcion enviar Correo

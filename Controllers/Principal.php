@@ -5,13 +5,12 @@ class Principal extends Controller
     {
         parent::__construct();
         session_start();
-
     }
-    public function index() {}
 
     //VISTA ABOUT
     public function about()
     {
+        $data['perfil'] = 'no';
         $data['title'] = 'Nuestro Equipo';
         $this->views->getView('principal', "about", $data);
     }
@@ -19,7 +18,7 @@ class Principal extends Controller
     //VISTA SHOP
     public function shop($page)
     {
-
+        $data['perfil'] = 'no';
         $pagina = (empty($page)) ? 1 : $page;
         $porPagina = 21;
         $desde = ($pagina - 1) * $porPagina;
@@ -34,10 +33,10 @@ class Principal extends Controller
     //VISTA DETAILS
     public function detail($id_producto)
     {
+        $data['perfil'] = 'no';
         $data['producto'] = $this->model->getProducto($id_producto);
         $id_categoria = $data['producto']['id_categoria'];
         $data['relacionados'] = $this->model->getAleatorios($id_categoria, $data['producto']['id']);
-
         $data['title'] = $data['producto']['nombre'];
         $this->views->getView('principal', "shop-single", $data);
     }
@@ -45,6 +44,7 @@ class Principal extends Controller
     //VISTA CATEGORIAS
     public function categorias($datos)
     {
+        $data['perfil'] = 'no';
         $id_categoria = 1; // inicializo la variable id_categoria a 1
         $page = 1; // inicializo la variable page a 1
         $array = explode(',', $datos); // separo los datos para saber si hay id_categoria y page
@@ -75,6 +75,7 @@ class Principal extends Controller
     //VISTA CONTACT
     public function contact()
     {
+        $data['perfil'] = 'no';
         $data['title'] = 'Contactanos';
         $this->views->getView('principal', "contact", $data);
     }
@@ -82,11 +83,12 @@ class Principal extends Controller
     //VISTA LISTA DE DESEOS
     public function deseo()
     {
+        $data['perfil'] = 'no';
         $data['title'] = 'Tu lista de deseos';
         $this->views->getView('principal', "deseo", $data);
     }
     //OBTENER PRODUCTOS APARTIR DE LA LISTA DE DESEOS
-   /* public function listaDeseo()
+    /* public function listaDeseo()
     {
         $datos = file_get_contents('php://input');
         $json = json_decode($datos, true);
@@ -124,7 +126,7 @@ class Principal extends Controller
                 array_push($array['productos'], $data);
                 $total += $subTotal;
             }
-        }        
+        }
         $array['total'] = number_format($total, 2);
         $array['totalPaypal'] = number_format($total, 2, '.', '');
         $array['moneda'] = MONEDA;
@@ -132,4 +134,11 @@ class Principal extends Controller
         die();
     }
 
+    //busqueda
+    public function busqueda($valor)
+    {
+        $data = $this->model->getBusqueda($valor);
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        die();
+    }
 }

@@ -189,4 +189,20 @@ class Clientes extends Controller
         echo json_encode($data);
         die();
     }
+    //comprobar si se esta usando
+    public function verPedido($idPedido)
+    {
+        $data['pedido'] = $this->model->getPedido($idPedido);
+        $data['productos'] = $this->model->verPedidos($idPedido);
+        $data['moneda'] = MONEDA;
+        echo json_encode($data);
+        die();
+    }
+
+    //Salir
+    public function salir()
+    {
+        session_destroy();
+        header('Location: ' . BASE_URL);
+    }
 }
