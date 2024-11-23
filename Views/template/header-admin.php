@@ -22,7 +22,17 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/dark-theme.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/semi-dark.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/header-colors.css" />
-    <title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/DataTables/datatables.min.css">
+
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/fontawesome.min.css">
+
+    <title><?php echo TITLE . ' - ' . $data['title']; ?></title>
+
+
+ 
+
+
 </head>
 
 <body>
@@ -43,24 +53,18 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="<?php echo BASE_URL . 'admin/home'; ?>">
                         <div class="parent-icon"><i class='bx bx-home-circle'></i>
                         </div>
                         <div class="menu-title">Dashboard</div>
                     </a>
-                    <ul>
-                        <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Default</a>
-                        </li>
-                        <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Alternate</a>
-                        </li>
-                    </ul>
+
                 </li>
 
-                <li class="menu-label">UI Elements</li>
                 <li>
-                    <a href="widgets.html">
-
-                        <div class="menu-title"><i class='fas fa-users'></i>Usuarios</div>
+                    <a href="<?php echo BASE_URL . 'usuarios'; ?>">
+                        <div class="parent-icon"><i class='fas fa-users' style='font-size: 18px;'></i></div>
+                        <div class="menu-title">Usuarios</div>
                     </a>
                 </li>
             </ul>

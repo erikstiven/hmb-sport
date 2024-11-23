@@ -1,4 +1,4 @@
-<?php include_once 'Views/template-principal/header.php'; ?>
+<?php include_once 'Views/template/header-principal.php'; ?>
 
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
@@ -66,7 +66,7 @@
         </div>
     </div>
     <!-- End Contact -->
-    <?php include_once 'Views/template-principal/footer.php'; ?>
+    <?php include_once 'Views/template/footer-principal.php'; ?>
 
 
 

@@ -1,4 +1,4 @@
-<?php include_once 'Views/template-principal/header.php'; ?>
+<?php include_once 'Views/template/header-principal.php'; ?>
     <section class="bg-success py-5">
         <div class="container">
             <div class="row align-items-center py-5">
@@ -165,7 +165,7 @@
         </div>
     </section>
     <!--End Brands-->
-    <?php include_once 'Views/template-principal/footer.php'; ?>
+    <?php include_once 'Views/template/footer-principal.php'; ?>
 
 
 
