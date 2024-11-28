@@ -3,21 +3,19 @@ const frm = document.querySelector("#frmRegistro");
 const tittleModal = document.querySelector("#titleModal");
 const btnAccion = document.querySelector("#btnAccion");
 const myModal = new bootstrap.Modal(document.getElementById('nuevoModal'))//iniciamos el modal
-let tblUsuario;
+let tblCategorias;
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    tblUsuario = $('#tblUsuarios').DataTable({
+    tblCategorias = $('#tblCategorias').DataTable({
         ajax: {
-            url: base_url + 'usuarios/listar',//asignar rutas
+            url: base_url + 'categorias/listar',//asignar rutas
             dataSrc: ''
         },
         columns: [
             { data: 'id' },
-            { data: 'nombres' },
-            { data: 'apellidos' },
-            { data: 'correo' },
-            { data: 'perfil' },
+            { data: 'categoria' },
+            { data: 'imagen' },
             { data: 'accion' }
 
         ],
@@ -29,19 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
     //levantar el modal
     nuevo.addEventListener("click", function () {
         document.querySelector('#id').value = '';
-
-        tittleModal.textContent = "NUEVO USUARIO";
+        document.querySelector('#imagen_actual').value = '';
+        document.querySelector('#imagen').value = '';
+        tittleModal.textContent = "NUEVA CATEGORIA";
         btnAccion.textContent = "Registrar";
         frm.reset();
-        document.querySelector('#clave').removeAttribute('readonly');
-
         myModal.show();
-    })
-    //submit  usuarios
+    });
+    //submit  categorias
     frm.addEventListener("submit", function (e) {
         e.preventDefault();
         let data = new FormData(this);
-        const url = base_url + "usuarios/registrar";//url del controlador
+        const url = base_url + "categorias/registrar";//url del controlador
         const http = new XMLHttpRequest();//creamos el objeto
         http.open("POST", url, true);//abrimos la url
         http.send(data);//enviamos la lista
@@ -52,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const res = JSON.parse(this.responseText);//obtenemos la respuesta
                 if (res.icono == 'success') {
                     myModal.hide();
-                    tblUsuario.ajax.reload();
+                    tblCategorias.ajax.reload();
                 }
 
                 Swal.fire(
@@ -67,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //funcion eliminar usuario
-function eliminarUser(idUser) {
+function eliminarCat(idCat) {
     Swal.fire({
         title: "Aviso?",
         text: "Estas seguro de eliminar el registro!",
@@ -78,7 +75,7 @@ function eliminarUser(idUser) {
         confirmButtonText: "Si, eliminar!"
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = base_url + "usuarios/delete/" + idUser;//url del controlador
+            const url = base_url + "categorias/delete/" + idCat;//url del controlador
             const http = new XMLHttpRequest();//creamos el objeto
             http.open("GET", url, true);//abrimos la url
             http.send();//enviamos la lista
@@ -88,7 +85,7 @@ function eliminarUser(idUser) {
 
                     const res = JSON.parse(this.responseText);//obtenemos la respuesta
                     if (res.icono == 'success') {
-                        tblUsuario.ajax.reload();
+                        tblCategorias.ajax.reload();
                     }
 
                     Swal.fire(
@@ -106,25 +103,22 @@ function eliminarUser(idUser) {
 }
 
 //Editar usuario
-function editUser(idUser) {
-    const url = base_url + "usuarios/edit/" + idUser;//url del controlador
-    const http = new XMLHttpRequest();//creamos el objeto
-    http.open("GET", url, true);//abrimos la url
-    http.send();//enviamos la lista
-    http.onreadystatechange = function () {//cuando el objeto cambie de estado
-        if (this.readyState == 4 && this.status == 200) {//si el estado es correcto
+function editCat(idCat) {
+    const url = base_url + "categorias/edit/" + idCat;
+    const http = new XMLHttpRequest();
+    http.open("GET", url, true);
+    http.send();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
-
-            const res = JSON.parse(this.responseText);//obtenemos la respuesta
+            const res = JSON.parse(this.responseText);
             document.querySelector('#id').value = res.id;
-            document.querySelector('#nombre').value = res.nombres;
-            document.querySelector('#apellido').value = res.apellidos;
-            document.querySelector('#correo').value = res.correo;
-            document.querySelector('#clave').setAttribute('readonly', 'readonly');
-            btnAccion.textContent = "Actualizar";
-            tittleModal.textContent = "MODIFICAR USUARIO";
+            document.querySelector('#categoria').value = res.categoria;
+            document.querySelector('#imagen_actual').value = res.imagen;
+            btnAccion.textContent = 'Actualizar';
+            tittleModal.textContent = "MODIFICAR CATEGORIA";
             myModal.show();
-        };
+            //$('#nuevoModal').modal('show');
+        }
     }
-
 }

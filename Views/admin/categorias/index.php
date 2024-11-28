@@ -1,6 +1,6 @@
 <?php include_once 'Views/template/header-admin.php'; ?>
 
-<button class="btn btn-primary mb-2"  id="nuevo_registro">Nuevo</button>
+<button class="btn btn-primary mb-2" id="nuevo_registro">Nuevo</button>
 
 
 <!-- <div class="card">
@@ -28,15 +28,13 @@
     <div class="card shadow-lg">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover" style="width: 100%;" id="tblUsuarios">
+                <table class="table table-bordered table-striped table-hover align-middle" style="width: 100%;" id="tblCategorias">
                     <thead class="bg-dark text-white">
                         <tr>
                             <th>#</th>
                             <th>Nombres</th>
-                            <th>Apellidos</th>
-                            <th>Correo</th>
-                            <th>Foto</th>
-                            <th>Acción</th>
+                            <th>Imagen</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +45,6 @@
         </div>
     </div>
 </div>
-
 <div id="nuevoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -59,26 +56,20 @@
             <form id="frmRegistro">
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
+                    <input type="hidden" id="imagen_actual" name="imagen_actual">
+
                     <div class="form-group mb-2">
-                        <label for="nombre">Nombres</label>
-                        <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombres">
+                        <label for="categoria">Nombre</label>
+                        <input id="categoria" class="form-control" type="text" name="categoria" placeholder="Categorias">
                     </div>
-                    <div class="form-group mb-2">
-                        <label for="apellido">Apellidos</label>
-                        <input id="apellido" class="form-control" type="text" name="apellido" placeholder="Apellidos">
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="correo">Correo</label>
-                        <input id="correo" class="form-control" type="email" name="correo" placeholder="Correo electrónico">
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="clave">Contraseña</label>
-                        <input id="clave" class="form-control" type="password" name="clave" placeholder="Contraseña">
+                    <div class="form-group">
+                        <label for="imagen">Imagen (Opcional)</label>
+                        <input id="imagen" class="form-control-file" type="file" name="imagen">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="submit" id="btnAccion">Registrar</button>
-                    <button class="btn btn-danger  " type="button" data-bs-dismiss="modal" >Cancelar</button>
+                    <button class="btn btn-danger  " type="button" data-bs-dismiss="modal">Cancelar</button>
 
                 </div>
             </form>
@@ -91,12 +82,7 @@
 <?php include_once 'Views/template/footer-admin.php'; ?>
 
 
-
-
-
-
-
-<script src="<?php echo BASE_URL . 'assets/js/modulos/usuarios.js'; ?>"></script>
+<script src="<?php echo BASE_URL . 'assets/js/modulos/categorias.js'; ?>"></script>
 
 
 </body>

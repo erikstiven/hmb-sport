@@ -63,8 +63,14 @@
 
                 <li>
                     <a href="<?php echo BASE_URL . 'usuarios'; ?>">
-                        <div class="parent-icon"><i class='fas fa-users' style='font-size: 18px;'></i></div>
+                        <div class="parent-icon"><i class='fas fa-users' style='font-size: 16px;'></i></div>
                         <div class="menu-title">Usuarios</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_URL . 'categorias'; ?>">
+                        <div class="parent-icon"><i class='fas fa-tags' style='font-size: 16px;'></i></div>
+                        <div class="menu-title">Categorias</div>
                     </a>
                 </li>
             </ul>
