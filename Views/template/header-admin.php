@@ -73,6 +73,13 @@
                         <div class="menu-title">Categorias</div>
                     </a>
                 </li>
+
+                <li>
+                    <a href="<?php echo BASE_URL . 'productos'; ?>">
+                        <div class="parent-icon"><i class='fas fa-list' style='font-size: 16px;'></i></div>
+                        <div class="menu-title">Productos</div>
+                    </a>
+                </li>
             </ul>
             <!--end navigation-->
         </div>

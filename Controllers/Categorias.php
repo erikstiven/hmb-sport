@@ -20,8 +20,8 @@ class Categorias extends Controller
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['imagen'] = '<img class="img-thumbnail" src="'. $data[$i]['imagen'] .'" alt="'.$data[$i]['categoria'].'" width="60">';
             $data[$i]['accion'] = '<div class="d-flex">
-            <button class="btn btn-primary" type="button" onclick="editCat(' . $data[$i]['id'] . ')"> <i class="fas fa-edit"></i></button>
-            <button class="btn btn-danger" type="button" onclick="eliminarCat(' . $data[$i]['id'] . ')"> <i class="fas fa-trash"></i></button>
+            <button class="btn btn-primary me-1" style="padding: 2px 4px; font-size: 8px; line-height: 3;" type="button" onclick="editCat(' . $data[$i]['id'] . ')"> <i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger" style="padding: 2px 4px; font-size: 8px; line-height: 3;" type="button" onclick="eliminarCat(' . $data[$i]['id'] . ')"> <i class="fas fa-trash"></i></button>
             </div>';
         }
         echo json_encode($data);
