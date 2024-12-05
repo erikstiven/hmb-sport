@@ -116,7 +116,6 @@
 <script src="<?php echo BASE_URL; ?>assets/plugins/metismenu/js/metisMenu.min.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/plugins/chartjs/js/Chart.min.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/plugins/chartjs/js/Chart.extension.js"></script>
-<!-- <script src="<?php echo BASE_URL; ?>assets/js/index.js"></script> -->
 <!--app JS-->
 <script src="<?php echo BASE_URL; ?>assets/js/app.js"></script>
 

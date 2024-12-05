@@ -128,8 +128,9 @@ function editPro(idPro) {
             document.querySelector("#descripcion").value = res.descripcion;
             document.querySelector("#imagen_actual").value = res.imagen;
             btnAccion.textContent = "Actualizar";
-            firstTab.show();
+            firstTab.show();//mostrar la primera pestana
         }
+
     };
 }
 
