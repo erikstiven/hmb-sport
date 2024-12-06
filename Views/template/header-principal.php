@@ -140,7 +140,7 @@ https://templatemo.com/tm-559-zay-shop
                         </a>
                     <?php if (!empty($_SESSION['correoCliente'])) { ?>
                         <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'clientes' ?>">
-                            <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.png' ?>" alt="-LOGO-CLIENTE" width="50">
+                            <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/images/clientes/default.png' ?>" alt="-LOGO-CLIENTE" width="50">
                         </a>
                     <?php } else { ?>
                         <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">

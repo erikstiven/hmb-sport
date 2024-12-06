@@ -21,9 +21,9 @@ class Productos extends Controller
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['imagen'] = '<img class="img-thumbnail" src="'. $data[$i]['imagen'] .'" alt="'.$data[$i]['nombre'].'" width="60">';
             $data[$i]['accion'] = '<div class="d-flex">
-            <button class="btn btn-success btn-sm me-1" style="padding: 2px 4px; font-size: 8px; line-height: 3;" type="button" onclick="agregarImagenes(' . $data[$i]['id'] . ')"><i class="fas fa-images"></i></button>
-            <button class="btn btn-primary btn-sm me-1" style="padding: 2px 4px; font-size: 8px; line-height: 3;" type="button"  onclick="editPro(' . $data[$i]['id'] . ')"> <i class="fas fa-edit"></i></button>
-            <button class="btn btn-danger btn-sm " style="padding: 2px 4px; font-size: 8px; line-height: 3;" type="button" onclick="eliminarPro(' . $data[$i]['id'] . ')"> <i class="fas fa-trash"></i></button>
+            <button class="btn btn-success  me-1"  type="button" onclick="agregarImagenes(' . $data[$i]['id'] . ')"><i class="fas fa-images"></i></button>
+            <button class="btn btn-primary  me-1"  type="button"  onclick="editPro(' . $data[$i]['id'] . ')"> <i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger  "  type="button" onclick="eliminarPro(' . $data[$i]['id'] . ')"> <i class="fas fa-trash"></i></button>
             </div>';
         }
         echo json_encode($data);
