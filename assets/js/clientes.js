@@ -141,7 +141,7 @@ function verPedido(idPedido) {
     const http = new XMLHttpRequest();
     http.open('GET', url, true);
     http.send();
-    http.onreadystatechange = function() {
+    http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             const res = JSON.parse(this.responseText);
             let html = '';

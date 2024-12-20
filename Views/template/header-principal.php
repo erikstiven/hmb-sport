@@ -34,7 +34,7 @@
 
 
     <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/fontawesome.min.css">
 
     <!-- Slick -->
@@ -60,7 +60,26 @@ TemplateMo 559 Zay Shop
 https://templatemo.com/tm-559-zay-shop
 
 -->
+<!-- Incluye FontAwesome desde CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
+
+<!-- Estilo de Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
+         />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #mapid {
+            width: 100%;
+            height: 500px; /* Altura fija para que Leaflet funcione */
+        }
+    </style>
+    
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
+    
 
 </head>
 

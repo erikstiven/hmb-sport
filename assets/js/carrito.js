@@ -86,7 +86,7 @@ function agregarCarrito(idProducto, cantidad, accion = false) {
     } else {//si la lista existe
         let listaExiste = JSON.parse(localStorage.getItem('listaCarrito'));//obtenemos la lista        
         for (let i = 0; i < listaExiste.length; i++) {//verificamos si el producto ya existe
-            if(accion){
+            if (accion) {
                 eliminarListaDeseo(idProducto);
             }
             if (listaExiste[i]['idProducto'] == idProducto) {//si el id del producto coincide
@@ -132,39 +132,42 @@ function getListaCarrito() {
     http.open("POST", url, true);//abrimos la url
     http.send(JSON.stringify(listaCarrito));//enviamos la lista
     http.onreadystatechange = function () {//cuando el objeto cambie de estado
-      if (this.readyState == 4 && this.status == 200) {//si el estado es correcto
-        const res = JSON.parse(this.responseText);//obtenemos la respuesta
-        let html = "";//creamos el html
-        res.productos.forEach((producto) => {//recorremos la lista de productos
-          html += `<tr>
-                      <td><img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100" ></td>
+        if (this.readyState == 4 && this.status == 200) {//si el estado es correcto
+            const res = JSON.parse(this.responseText);//obtenemos la respuesta
+            let html = "";//creamos el html
+            res.productos.forEach((producto) => {//recorremos la lista de productos
+                html += `<tr>
+                      <td><img class="img-thumbnail rounded-circle" src="${base_url + producto.imagen}" alt="" width="100" ></td>
                       <td>${producto.nombre}</td>
-                      <td><span class="badge bg-warning">${res.moneda + ' ' + producto.precio}</span></td>
-                      <td><span class="badge bg-primary">${producto.cantidad}</span></td>
+                      <td><span class="badge bg-warning">${res.moneda + ' ' + producto.precio}</td>
+                      <td width = "100">
+                      <input type="number" class="form-control agregarCantidad" id="${producto.id}" value = "${producto.cantidad}">
+                      </td>
                       <td>${producto.subTotal}</td>
                       <td><button class="btn btn-danger btnDeletecart" type="button" prod="${producto.id}"><i class="fas fa-times-circle"></i></button> </td>
               </tr>
               `;
-        });
-        tableListaCarrito.innerHTML = html;//insertamos el html en el body
-        document.querySelector('#totalGeneral').textContent = res.total;  
-        btnEliminarCarrito();
-    
-      }
-    };
-  }
+            });
+            tableListaCarrito.innerHTML = html;//insertamos el html en el body
+            document.querySelector('#totalGeneral').textContent = res.total;
+            btnEliminarCarrito();
+            cambiarCantidad();
 
-  function btnEliminarCarrito(){
+        }
+    };
+}
+
+function btnEliminarCarrito() {
     let listaEliminar = document.querySelectorAll('.btnDeletecart');
     for (let i = 0; i < listaEliminar.length; i++) {
         listaEliminar[i].addEventListener('click', function () {
             let idProducto = listaEliminar[i].getAttribute('prod');
-eliminarListaCarrito(idProducto);            
+            eliminarListaCarrito(idProducto);
         })
     }
 }
 
-function eliminarListaCarrito(idProducto){
+function eliminarListaCarrito(idProducto) {
     for (let i = 0; i < listaCarrito.length; i++) {   //Elimina el producto de la lista
         if (listaCarrito[i]['idProducto'] == idProducto) {//si el id del producto coincide
             listaCarrito.splice(i, 1);
@@ -177,5 +180,25 @@ function eliminarListaCarrito(idProducto){
         title: "Aviso?",
         text: "Producto eliminado del carrito",
         icon: "success",
-      });
+    });
+}
+//Cambiar cantidad
+function cambiarCantidad() {
+    let listaCantidad = document.querySelectorAll('.agregarCantidad');
+    for (let i = 0; i < listaCantidad.length; i++) {
+        listaCantidad[i].addEventListener('change', function () {
+            let idProducto = listaCantidad[i].id;
+            let cantidad = listaCantidad[i].value
+            incrementarCantidad(idProducto, cantidad);
+        })
+    }
+}
+
+function incrementarCantidad(idProducto, cantidad) {
+    for (let i = 0; i < listaCarrito.length; i++) {
+        if (listaCarrito[i]['idProducto'] == idProducto) {
+            listaCarrito[i].cantidad = cantidad;
+        }
+    }
+    localStorage.setItem('listaCarrito', JSON.stringify(listaCarrito));
 }
